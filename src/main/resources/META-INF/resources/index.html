@@ -4,8 +4,22 @@
 <meta charset="UTF-8">
 <title>websocket</title>
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="bower_components/semantic/dist/semantic.min.css">
+<script type="text/javascript" src="bower_components/semantic/dist/semantic.min.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+
+<script type="text/javascript" src="index.js"></script>
 </head>
-<body>
+<body class="fluid container">
+
+<div id="http" ng-controller="HttpController">
+	<h2 class="ui header">Http</h2>
+	<button ng-click="vm.get()">查询</button>
+	<div class="ui info message">
+		{{ vm.msg }}
+	</div>
+</div>
 
 </body>
 </html>
