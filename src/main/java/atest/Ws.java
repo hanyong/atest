@@ -1,6 +1,7 @@
 package atest;
 
 import java.io.IOException;
+import java.io.OutputStream;
 
 import javax.websocket.Endpoint;
 import javax.websocket.EndpointConfig;
@@ -11,10 +12,16 @@ public class Ws extends Endpoint {
 
 	@Override
 	public void onOpen(Session session, EndpointConfig config) {
-		String msg = "Hello WebSocket";
+		byte[] msg = { 'w', 's', };
 		Basic remote = session.getBasicRemote();
 		try {
-			remote.sendText(msg);
+			OutputStream out = remote.getSendStream();
+			for (int i = 0; i < 1; ++i) {
+				for (int j = 0; j < 4; ++j) {
+					out.write(msg[j % msg.length]);
+				}
+				out.flush();
+			}
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
