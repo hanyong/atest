@@ -11,11 +11,19 @@
 
 <script type="text/javascript" src="index.js"></script>
 </head>
-<body class="fluid container">
+<body class="ui one column padded grid">
 
-<div id="http" ng-controller="HttpController">
+<div id="http" class="column" ng-controller="HttpController">
 	<h2 class="ui header">Http</h2>
 	<button ng-click="vm.get()">查询</button>
+	<div class="ui info message">
+		{{ vm.msg }}
+	</div>
+</div>
+
+<div id="ws" class="column" ng-controller="WebSocketController">
+	<h2 class="ui header">WebSocket</h2>
+	<button ng-click="vm.connect()">连接</button>
 	<div class="ui info message">
 		{{ vm.msg }}
 	</div>

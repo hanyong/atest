@@ -1,5 +1,8 @@
 package atest;
 
+import javax.servlet.ServletContext;
+import javax.websocket.server.ServerContainer;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -16,6 +19,11 @@ public class App {
 	public ServletRegistrationBean httpServletRegistrationBean(Http http) {
 		ServletRegistrationBean reg = new ServletRegistrationBean(http, "/http");
 		return reg;
+	}
+	
+	@Bean
+	public ServerContainer serverContainer(ServletContext context) {
+		return (ServerContainer) context.getAttribute(ServerContainer.class.getName());
 	}
 	
 }
