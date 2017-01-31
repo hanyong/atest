@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 
-@org.springframework.context.annotation.Configuration
+//@org.springframework.context.annotation.Configuration
 public class WsConfig implements ApplicationRunner {
 
 	@Autowired
