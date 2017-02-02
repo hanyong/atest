@@ -8,6 +8,7 @@ import javax.websocket.EndpointConfig;
 import javax.websocket.RemoteEndpoint.Basic;
 import javax.websocket.Session;
 
+@javax.websocket.ClientEndpoint
 public class Ws extends Endpoint {
 
 	@Override
