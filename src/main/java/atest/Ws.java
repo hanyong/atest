@@ -27,5 +27,10 @@ public class Ws extends Endpoint {
 			throw new RuntimeException(ex);
 		}
 	}
+	
+	@javax.websocket.OnMessage
+	public void onMessage(String message) {
+		System.out.println("Endpoint onMessage: " + message);
+	}
 
 }
