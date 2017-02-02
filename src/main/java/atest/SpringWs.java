@@ -13,4 +13,9 @@ public class SpringWs extends AbstractWebSocketHandler {
 		session.sendMessage(new TextMessage("Hello WebSocket"));
 	}
 	
+	@Override
+	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+		System.out.println("Server get message: " + message.getPayload());
+	}
+	
 }
