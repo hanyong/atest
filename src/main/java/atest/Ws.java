@@ -28,9 +28,9 @@ public class Ws extends Endpoint {
 		}
 	}
 	
-	@javax.websocket.OnMessage
-	public void onMessage(String message) {
-		System.out.println("Endpoint onMessage: " + message);
-	}
+//	@javax.websocket.OnMessage
+//	public void onMessage(String message) {
+//		System.out.println("Endpoint onMessage: " + message);
+//	}
 
 }

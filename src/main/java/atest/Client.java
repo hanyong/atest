@@ -12,12 +12,12 @@ public class Client {
 		WebSocketContainer container = ContainerProvider.getWebSocketContainer();
 		URI path = new URI("ws://localhost:8080/ws");
 		Session session = container.connectToServer(new Ws(), path);
-//		session.addMessageHandler(new javax.websocket.MessageHandler.Whole<String>() {
-//			@Override
-//			public void onMessage(String message) {
-//				System.out.println("Client get message: " + message);
-//			}
-//		});
+		session.addMessageHandler(new javax.websocket.MessageHandler.Whole<String>() {
+			@Override
+			public void onMessage(String message) {
+				System.out.println("Client get message: " + message);
+			}
+		});
 		Thread.sleep(5000);
 	}
 	
