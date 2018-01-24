@@ -1,4 +1,4 @@
-package atest;
+package atest.websocket;
 
 import java.net.URI;
 

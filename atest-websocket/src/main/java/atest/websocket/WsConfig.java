@@ -1,4 +1,4 @@
-package atest;
+package atest.websocket;
 
 import javax.websocket.server.ServerContainer;
 import javax.websocket.server.ServerEndpointConfig;

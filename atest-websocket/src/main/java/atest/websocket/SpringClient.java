@@ -1,4 +1,4 @@
-package atest;
+package atest.websocket;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
