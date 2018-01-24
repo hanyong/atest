@@ -23,10 +23,11 @@ public class App implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		final int taskCount = 1;
+		final int taskCount = Runtime.getRuntime().availableProcessors();
 		final Task task = new Task(taskCount);
 		final ExecutorService executor = Executors.newCachedThreadPool();
 		final StopWatch stopWatch = new StopWatch();
+		logger.info("taskCount: {}", taskCount);
 		
 		stopWatch.start();
 		for (int i = 0; i < taskCount; ++i) {
@@ -41,7 +42,7 @@ public class App implements ApplicationRunner {
 		
 		task.start();
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// pass
 		}
@@ -53,6 +54,16 @@ public class App implements ApplicationRunner {
 			throw new RuntimeException(e);
 		}
 		logger.info("task done: {}", stopWatch);
+		
+		do {
+			int count = task.gate.getAndResetCount();
+			task.countSum.addAndGet(count);
+			logger.info("[{}] last hello", count);
+		} while (false);
+		
+		long count = task.count.get();
+		long countSum = task.countSum.get();
+		logger.info("count={} countSum={} equals={}", count, countSum, count == countSum);
 	}
 	
 }
