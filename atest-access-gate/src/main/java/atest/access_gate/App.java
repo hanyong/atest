@@ -56,9 +56,10 @@ public class App implements ApplicationRunner {
 		logger.info("task done: {}", stopWatch);
 		
 		do {
+			long delay = task.getDelay(System.currentTimeMillis());
 			int count = task.gate.getAndResetCount();
 			task.countSum.addAndGet(count);
-			logger.info("[{}] last hello", count);
+			logger.info("delay={} count={} hello", delay, count);
 		} while (false);
 		
 		long count = task.count.get();

@@ -12,12 +12,22 @@ public class Task extends LifecycleSupport implements Runnable {
 	public AtomicLong count = new AtomicLong();
 	public AtomicLong countSum = new AtomicLong();
 	public AccessGate gate;
+
+	public AtomicLong lastTime = new AtomicLong();
 	
 	public Task(int taskCount) {
 		super(taskCount);
-		gate = new AccessGate(System.currentTimeMillis(), 1000);
+		long currentTime = System.currentTimeMillis();
+		gate = new AccessGate(currentTime, 1000);
+		lastTime.set(currentTime);
 	}
 
+	public long getDelay(long currentTime) {
+		long delay = -lastTime.addAndGet(-currentTime);
+		lastTime.set(currentTime);
+		return delay;
+	}
+	
 	@Override
 	public void run() {
 		readyLatch.countDown();
@@ -35,10 +45,12 @@ public class Task extends LifecycleSupport implements Runnable {
 				// pass
 			}
 			count.incrementAndGet();
-			if (gate.permit(System.currentTimeMillis())) {
+			long currentTime = System.currentTimeMillis();
+			if (gate.permit(currentTime)) {
+				long delay = getDelay(currentTime);
 				int count = gate.getAndResetCount();
 				countSum.addAndGet(count);
-				logger.info("[{}] hello", count);
+				logger.info("delay={} count={} hello", delay, count);
 			}
 		}
 	}
