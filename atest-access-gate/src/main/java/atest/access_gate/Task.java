@@ -5,6 +5,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.github.hanyong.commons.AccessGate;
+
 public class Task extends LifecycleSupport implements Runnable {
 
 	private static final Logger logger = LoggerFactory.getLogger(Task.class);
