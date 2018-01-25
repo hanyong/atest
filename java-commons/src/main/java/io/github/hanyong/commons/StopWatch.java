@@ -12,6 +12,9 @@ public class StopWatch extends AbstractStopWatch {
 	protected AtomicLong startTime = new AtomicLong();
 	protected AtomicLong stopTime = new AtomicLong();
 	
+	/**
+	 * 实现说明：覆盖写。
+	 */
 	@Override
 	public void start(long currentTime) {
 		startTime.set(currentTime);
@@ -22,6 +25,9 @@ public class StopWatch extends AbstractStopWatch {
 		stopTime.set(currentTime);
 	}
 
+	/**
+	 * 实现说明：只读。
+	 */
 	@Override
 	public boolean isStopped() {
 		return stopTime.get() != 0L;
