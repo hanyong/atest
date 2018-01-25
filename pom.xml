@@ -26,8 +26,13 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>atest</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>atest-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.hanyong</groupId>
+				<artifactId>java-commons</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -39,10 +44,6 @@
 	</dependencyManagement>
 	
 	<dependencies>
-		<dependency>
-			<groupId>atest</groupId>
-			<artifactId>atest-core</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
