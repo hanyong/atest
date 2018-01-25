@@ -20,12 +20,13 @@
 		<module>atest-core</module>
 		<module>atest-websocket</module>
 		<module>atest-access-gate</module>
+		<module>java-commons</module>
 	</modules>
 	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>${project.groupId}</groupId>
+				<groupId>atest</groupId>
 				<artifactId>atest-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -39,7 +40,7 @@
 	
 	<dependencies>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
+			<groupId>atest</groupId>
 			<artifactId>atest-core</artifactId>
 		</dependency>
 		<dependency>
