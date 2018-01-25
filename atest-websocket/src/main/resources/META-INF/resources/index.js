@@ -35,6 +35,8 @@ function WebSocketController($scope) {
 
 	vm.ws = null;
 	vm.msg = "";
+	vm.sendMsg = "";
+	vm.msgList = jQuery("#msgList");
 	
 	vm.connect = function() {
 		if (vm.ws == null) {
@@ -42,10 +44,19 @@ function WebSocketController($scope) {
 			vm.ws = new WebSocket(uri);
 			vm.ws.onmessage = function(event) {
 				vm.msg = event.data;
+				vm.msgList.append(jQuery("<li/>").text("SERVER: " + vm.msg));
 				$scope.$apply();
 			}
 		}
 	}
+	
+	vm.send = function() {
+		var msg = vm.sendMsg;
+		vm.msgList.append(jQuery("<li/>").text("SEND: " + msg));
+		vm.ws.send(msg);
+		vm.sendMsg = "";
+	}
+
 }
 
 

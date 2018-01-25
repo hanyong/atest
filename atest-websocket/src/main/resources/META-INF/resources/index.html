@@ -23,9 +23,19 @@
 
 <div id="ws" class="column" ng-controller="WebSocketController">
 	<h2 class="ui header">WebSocket</h2>
-	<button ng-click="vm.connect()">连接</button>
+	
+	<button ng-click="vm.connect()" ng-disabled="vm.ws != null">连接</button>
 	<div class="ui info message">
 		{{ vm.msg }}
+	</div>
+	
+	<ul id="msgList">
+	</ul>
+	
+	<div>
+		<label>Message:</label>
+		<input type="text" ng-model="vm.sendMsg">
+		<button type="button" ng-click="vm.send()" ng-disabled="vm.ws == null">Send</button>
 	</div>
 </div>
 
