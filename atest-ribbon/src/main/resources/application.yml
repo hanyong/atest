@@ -1,0 +1,14 @@
+spring:
+  main:
+    web-environment: false
+
+ribbon:
+  eureka:
+    enabled: false
+  eager-load:
+    enabled: true
+    clients: echo
+    
+echo:
+  ribbon:
+    listOfServers: example.com,oolap.com

@@ -17,10 +17,11 @@
 	</properties>
 	
 	<modules>
+		<module>java-commons</module>
 		<module>atest-core</module>
 		<module>atest-websocket</module>
 		<module>atest-access-gate</module>
-		<module>java-commons</module>
+		<module>atest-ribbon</module>
 	</modules>
 	
 	<dependencyManagement>
@@ -35,6 +36,15 @@
 				<artifactId>java-commons</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Edgware.SR2</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
